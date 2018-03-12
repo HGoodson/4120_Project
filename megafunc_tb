@@ -7,12 +7,12 @@ end eneity tb_RAM_top;
 
 architecture behavior of tb_RAM_top is
 
-signal data		: STD_LOGIC_VECTOR (7 downto 0);
-signal address		: STD_LOGIC_VECTOR (4 downto 0);
+signal data		: STD_LOGIC_VECTOR (31 downto 0);
+signal address		: STD_LOGIC_VECTOR (7 downto 0);
 signal clock		: STD_LOGIC := '0';
 signal resetn		: STD_LOGIC;
 signal wren		: STD_LOGIC;
-signal q		: STD_LOGIC_VECTOR (7 downto 0);
+signal q		: STD_LOGIC_VECTOR (31 downto 0);
 
 component RAM_top is
 
@@ -32,35 +32,35 @@ DUT: RAM_top port map (data, address, clock, resetn, wren, q);
 	resetn <= '0',
 		'1' after 75 ns;
 		
-	address <= "00000",
-		"00001" after 125 ns,
-			"00010" after 225 ns,
-			"00011" after 325 ns,
-			"00100" after 425 ns,
+	address <= "00000000",
+		"00000001" after 125 ns,
+			"00000010" after 225 ns,
+			"00000011" after 325 ns,
+			"00000100" after 425 ns,
 			
-		"00101" after 525 ns,
-			"00110" after 625 ns,
-			"00111" after 725 ns,
-			"00000" after 825 ns,
+		"00000101" after 525 ns,
+			"00000110" after 625 ns,
+			"00000111" after 725 ns,
+			"00000000" after 825 ns,
 		
-		"00001" after 925 ns,
-			"00010" after 1025 ns,
-			"00011" after 1125 ns,
-			"00100" after 1225 ns,
+		"00000001" after 925 ns,
+			"00000010" after 1025 ns,
+			"00000011" after 1125 ns,
+			"00000100" after 1225 ns,
 		
-		"00101" after 1325 ns,
-			"00110" after 1425 ns,
-			"00111" after 1525 ns,
-			"00000" after 1625 ns,
+		"00000101" after 1325 ns,
+			"00000110" after 1425 ns,
+			"00000111" after 1525 ns,
+			"00000000" after 1625 ns,
 			
-		data <= "00110011"
-			"00111111" after 125 ns,
-			"01011100" after 225 ns,
-			"01011100" after 325 ns,
-			"00110011" after 425 ns,
-			"00111111" after 525 ns,
-			"01011100" after 625 ns,
-			"01011100" after 725 ns;
+		data <= "00000000000000000000000000110011",
+			"00000000000000000000000000111111" after 125 ns,
+			"00000000000000000000000001011100" after 225 ns,
+			"00000000000000000000000001011100" after 325 ns,
+			"00000000000000000000000000110011" after 425 ns,
+			"00000000000000000000000000111111" after 525 ns,
+			"00000000000000000000000001011100" after 625 ns,
+			"00000000000000000000000001011100" after 725 ns;
 				
 		wren <= '1' after 20ns,
 			'0' after 825 ns;
