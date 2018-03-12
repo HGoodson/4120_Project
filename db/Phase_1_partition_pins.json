@@ -1,0 +1,145 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "Iout[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[6]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[7]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[8]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[9]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[10]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[11]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[12]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[13]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[14]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[15]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[16]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[17]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[18]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[19]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[20]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[21]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[22]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[23]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[24]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[25]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[26]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[27]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[28]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[29]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[30]",
+					"strict" : false
+				},
+				{
+					"name" : "Iout[31]",
+					"strict" : false
+				},
+				{
+					"name" : "Clock",
+					"strict" : false
+				},
+				{
+					"name" : "Clear",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
