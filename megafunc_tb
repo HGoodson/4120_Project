@@ -3,7 +3,7 @@ use IEE.STD_LOGIC_1164.all;
 
 entity tb_RAM_top is
 
-end eneity tb_RAM_top;
+end entity tb_RAM_top;
 
 architecture behavior of tb_RAM_top is
 
