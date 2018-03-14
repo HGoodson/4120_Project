@@ -16,7 +16,7 @@ begin
 	begin
 		if(CLR='1') then
 			Q <= x"00000000"; --Clear address and start at beggining
-		elsif rising_edge(clk) then
+		elsif (clk'event and clk = '1') then
 				Q <= D; --Set output as current input
 		end if;
 	end process;

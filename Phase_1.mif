@@ -6,12 +6,11 @@
 -- associated documentation or information are expressly subject 
 -- to the terms and conditions of the Intel Program License 
 -- Subscription Agreement, the Intel Quartus Prime License Agreement,
--- the Intel MegaCore Function License Agreement, or other 
--- applicable license agreement, including, without limitation, 
--- that your use is for the sole purpose of programming logic 
--- devices manufactured by Intel and sold by Intel or its 
--- authorized distributors.  Please refer to the applicable 
--- agreement for further details.
+-- the Intel FPGA IP License Agreement, or other applicable license
+-- agreement, including, without limitation, that your use is for
+-- the sole purpose of programming logic devices manufactured by
+-- Intel and sold by Intel or its authorized distributors.  Please
+-- refer to the applicable agreement for further details.
 
 -- Quartus Prime generated Memory Initialization File (.mif)
 
@@ -19,8 +18,24 @@ WIDTH=32;
 DEPTH=256;
 
 ADDRESS_RADIX=UNS;
-DATA_RADIX=UNS;
+DATA_RADIX=HEX;
 
 CONTENT BEGIN
-	[0..255]  :   0;
+	0    :   0000;
+	1    :   0001;
+	2    :   0002;
+	3    :   0003;
+	4    :   0004;
+	5    :   0005;
+	6    :   0006;
+	7    :   0007;
+	8    :   0008;
+	9    :   0009;
+	10   :   000A;
+	11   :   000B;
+	12   :   000C;
+	13   :   000D;
+	14   :   000E;
+	15   :   000F;
+	[16..255]  :   00;
 END;

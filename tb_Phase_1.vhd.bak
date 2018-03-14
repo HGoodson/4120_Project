@@ -1,0 +1,17 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity tb_Phase_1 is
+end entity tb_Phase_1;
+
+architecture tb_Phase_1_arch of tb_Phase_1 is
+	signal W0, W1, Sel, OutM : STD_LOGIC ;
+	component mux2to1 IS
+		PORT ( w0,w1,s : IN STD_LOGIC ;
+		f : OUT STD_LOGIC ) ;
+	END component ;
+	begin
+		DUT: mux2to1 port map (W0,W1, Sel, OutM);
+		Sel <= '0' ,
+		'1' after 250 ns,
+		'0' after 500 ns;

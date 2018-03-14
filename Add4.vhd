@@ -15,6 +15,7 @@ constant four : std_logic_vector (2 downto 0) := "100";
 begin
 	process(A)
 	begin
-		Q <= std_logic_vector(to_unsigned(to_integer(unsigned(A) + unsigned(four)),32)); --Add constant four to input
+		--Q <= std_logic_vector(to_unsigned(to_integer(unsigned(A) + unsigned(four)),32)); --Add four byte offset
+		Q <= std_logic_vector(to_unsigned(to_integer(unsigned(A) + 1),32)); --Add one word offset
 	end process;
 end a;
