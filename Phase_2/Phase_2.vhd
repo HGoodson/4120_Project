@@ -48,7 +48,7 @@ architecture structure of Phase_2 is
 
 begin
 	R1: RegisterBlock port map(rWrite,clock,instruction(25 downto 21),instruction(20 downto 16),instruction(15 downto 11),RLO,ReadOut1,ReadOut2);
-	M1: mux_21 port map(ReadOut1,sexout,muxout);
-	A1: ALU(ALUOp,ReadOut1,muxout,RLO,zero);
+	M1: mux_21 port map(ALUSrc,ReadOut1,sexout,muxout);
+	A1: ALU port map(ALUOp,ReadOut1,muxout,RLO,zero);
 
 end structure;
