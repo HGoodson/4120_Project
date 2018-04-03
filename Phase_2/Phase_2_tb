@@ -1,0 +1,54 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Phase_2_tb is
+end entity Phase_2_tb;
+
+architecture tb_arch of Phase_2_tb is
+
+signal instr		:	std_logic_vector(31 downto 0);
+signal aluOp		:	std_logic_vector(3 downto 0);
+signal CLK			:	std_logic := '0';
+signal aluSRC		:	std_logic;
+signal regWrite	:	std_logic;
+signal output		:	std_logic_vector(31 downto 0);
+
+	component Phase_2 is
+		port(instruction: in std_logic_vector(31 downto 0);
+			ALUOp: in std_logic_vector(3 downto 0);
+			clock,ALUSrc,rWrite: in std_logic;
+			RLO: buffer std_logic_vector(31 downto 0));
+	end component;
+
+
+	begin
+	DUT: Phase_2 port map (instr, aluOp, CLK, aluSRC, regWrite, output);
+
+			CLK <= not CLK after 1ns;
+			
+			aluSRC <='1',
+						'0' after 12ns;
+			
+					--ALU OP codes
+					--add 0011
+					--sub 0010
+					--and 0110
+					--other 0000
+			aluOp <= "0000",
+						"0011" after 12ns,
+						"0010" after 14ns,
+						"0110" after 16ns;
+			
+			regWrite <= '0';
+			
+			instr <= x"21080005",
+						x"21290001" after 2ns,
+						x"214A0003" after 4ns,
+						x"22100007" after 6ns,
+						x"22310002" after 8ns,
+						x"22520002" after 10ns,
+						x"01095820" after 12ns,
+						x"02116022" after 14ns,
+						x"016C6824" after 16ns;			
+			
+end architecture tb_arch;
