@@ -4,8 +4,11 @@ use ieee.std_logic_1164.all;
 entity Phase_2 is
 	port(instruction: in std_logic_vector(31 downto 0);
 		  ALUOp: in std_logic_vector(3 downto 0);
-		  clock,ALUSrc,rWrite: in std_logic;
-		  RLO: buffer std_logic_vector(31 downto 0)); --result of logic operation
+		  clock,ALUSrc,rWrite, WCM: in std_logic;
+		  RLO: buffer std_logic_vector(31 downto 0);
+		  RD1: out std_logic_vector(31 downto 0);
+		  RD2: out std_logic_vector(31 downto 0);
+		  MO : out std_logic_vector(31 downto 0)); --result of logic operation
 end Phase_2;
 
 architecture structure of Phase_2 is
@@ -38,8 +41,16 @@ architecture structure of Phase_2 is
 			  B		: in STD_LOGIC_VECTOR (31 downto 0);
 			  X		: out STD_LOGIC_VECTOR (31 downto 0));
 	end component;
-
+	
+	component RWmux_21 is
+		port (Sel	: in STD_LOGIC;
+			  A		: in STD_LOGIC_VECTOR (4 downto 0);
+			  B		: in STD_LOGIC_VECTOR (4 downto 0);
+			  X		: out STD_LOGIC_VECTOR (4 downto 0));
+	end component;
+	
 	--signal inst: std_logic_vector (31 downto 0);
+	signal RWmuxout: std_logic_vector(4 downto 0);
 	signal ReadOut1: std_logic_vector(31 downto 0);
 	signal ReadOut2: std_logic_vector(31 downto 0);
 	signal sexout: std_logic_vector(31 downto 0);
@@ -47,8 +58,12 @@ architecture structure of Phase_2 is
 	signal zero: std_logic;
 
 begin
-	R1: RegisterBlock port map(rWrite,clock,instruction(25 downto 21),instruction(20 downto 16),instruction(15 downto 11),RLO,ReadOut1,ReadOut2);
-	M1: mux_21 port map(ALUSrc,ReadOut1,sexout,muxout);
+	M1: RWmux_21 port map(WCM, instruction(20 downto 16), instruction(15 downto 11), RWmuxout);
+	R1: RegisterBlock port map(rWrite,clock,instruction(25 downto 21),instruction(20 downto 16), RWmuxout,RLO,ReadOut1,ReadOut2);
+	S1: SignExtendProject port map(instruction(15 downto 0), sexout);
+	M2: mux_21 port map(ALUSrc, sexout,ReadOut2,muxout);
 	A1: ALU port map(ALUOp,ReadOut1,muxout,RLO,zero);
-
+	RD1 <= ReadOut1;
+	RD2 <= ReadOut2;
+	MO <= muxout;
 end structure;
