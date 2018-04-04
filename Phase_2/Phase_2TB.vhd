@@ -8,15 +8,15 @@ end entity Phase_2TB;
 
 architecture Phase_2TB_arch of Phase_2TB is
 	signal instruction	:	std_logic_vector(31 downto 0) := x"21080005"; -- addi t0, t0, 0x5
-	signal ALUOp	:	std_logic_vector(3 downto 0) := "0011";
-	signal clock	:	std_logic := '0';
-	signal ALUSrc	:	std_logic := '1';
-	signal WCM		:	std_logic := '1';
-	signal rWrite	:	std_logic := '1';
-	signal RLO		:	std_logic_vector(31 downto 0); --result of logic operation
-	signal RD1		:	std_logic_vector(31 downto 0);
-	signal RD2		:	std_logic_vector(31 downto 0);
-	signal MO		:	std_logic_vector(31 downto 0);
+	signal ALUOp	:	std_logic_vector(3 downto 0) := "0011"; -- decides which operation to do, this one is add
+	signal clock	:	std_logic := '0';	-- start clock at 0
+	signal ALUSrc	:	std_logic := '1'; -- start the ALUSrc to 1 since we are using I-instructions first and need to use immediate values
+	signal WCM		:	std_logic := '1'; -- write to the rt register for the first few instructions since they are I-type
+	signal rWrite	:	std_logic := '1';	--	all of the instructions write to a register, so we will keep this set to 1
+	signal RLO		:	std_logic_vector(31 downto 0); -- result of logic operation
+	signal RD1		:	std_logic_vector(31 downto 0); -- Output of register data 1 for testing
+	signal RD2		:	std_logic_vector(31 downto 0); -- Output of register data 2 for testing
+	signal MO		:	std_logic_vector(31 downto 0); -- Output of multiplexer that leads into the ALU for testing
 
 	
 component Phase_2 IS
