@@ -142,6 +142,8 @@ end component;
 	signal IFID_inst,IFID_AddOut: std_logic_vector(31 downto 0);
 	signal XM_MemtoReg, XM_RegWrite, XM_MemRead, XM_MemWrite, XM_Branch: std_logic;
 	signal XM_ALUResult, XM_AddResult, XM_RegRead: std_logic_vector(31 downto 0);
+	signal XM_RegWriteIndex, MW_RegWriteIndex: std_logic_vector(4 downto 0);
+	
 	
 
 
@@ -160,10 +162,9 @@ begin --Port mapping for each device
 	S1: ShiftLeft2 port map (SESignal, ShiftToAdd);
 	A1: AddShiftLeft port map (AddToAdd, ShiftToAdd, AddToMux);
 	M2: AddMux port map (BranchAndOut, AddToAdd, AddToMux, AddMuxOut);
-
 	DM: Data_Memory port map (RLO(7 downto 0), Clock, ReadOut2, MemRead, Data_Memory_Out);
 	AN1: AndGate port map (Branch, ZeroSignal, BranchAndOut);
-	--MWReg: MEM_WB_Register port map (Clock,
+	--MWReg: MEM_WB_Register port map (Clock, --fully mapped, signals need to be declared
 	--											XM_MemtoReg,XM_RegWrite,
 	--											MW_MemtoReg,MW_RegWrite,
 	--											MemRead,XM_RLO,
